@@ -2,7 +2,7 @@
 
 亚博智能RKD X3 ROBOT是一款面向机器人开发者和教育生态的智能机器人开发套件。该套件以旭日X3派为核心运算单元，以TogetherROS.Bot为核心机器人操作系统，集成成了建图、导航、人体跟随、手势识别等功能。本项目为亚博智能RKD X3 ROBOT机器人最小功能系统，该系统能够实现RKD X3 ROBOT的基本运动控制和位姿反馈。该项目包含以下三个功能包：
 
-- SunriseRobotLib：负责与MCU的基础通信以及命令转换
+- yahboom_sunrise_robot_lib：负责与MCU的基础通信以及命令转换
 - yahboomcar_base_node：负责更新机器人的Odom和tf信息
 - yahboomcar_description：负责描述机器人机械机构信息
 - yahboomcar_bringup：负责机器人的初始化，订阅运动控制话题、发布机器人状态描述话题和IMU信息

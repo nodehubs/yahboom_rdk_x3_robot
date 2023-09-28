@@ -15,7 +15,11 @@
   <depend>rclcpp</depend>
   <depend>std_msgs</depend>
   <depend>imu_filter_madgwick</depend>
-  
+  <depend>robot_localization</depend>
+  <depend>joint_state_publisher</depend>
+  <depend>yahboom_sunrise_robot_lib</depend>
+  <depend>yahboomcar_base_node</depend>
+  <depend>yahboomcar_description</depend>
 
   <export>
     <build_type>ament_python</build_type>

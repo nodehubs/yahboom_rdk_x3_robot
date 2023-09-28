@@ -3,7 +3,7 @@
 
 #public lib
 from math import pi
-from SunriseRobotLib import SunriseRobot
+from yahboom_sunrise_robot_lib import SunriseRobot
 import smbus
 
 #ros lib
