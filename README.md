@@ -28,7 +28,7 @@
 
 ```bash
 sudo apt update
-sudo apt install -y tros-originbot-base tros-serial tros-originbot-msgs
+sudo apt install -y tros-yahboom-sunrise-robot-lib tros-yahboomcar-bringup tros-yahboomcar-description tros-yahboomcar-base-node
 ```
 
 ## 运行
@@ -39,29 +39,51 @@ sudo apt install -y tros-originbot-base tros-serial tros-originbot-msgs
 
 ```bash
 source /opt/tros/setup.bash
-ros2 launch originbot_base robot.launch.py 
+ros2 launch yahboomcar_bringup yahboomcar_nodehub_bringup_launch.py
 ```
 
 运行成功后可看到如下提示
 
 ```shell
-root@ubuntu:/userdata# ros2 launch originbot_base robot.launch.py
-[INFO] [launch]: All log files can be found below /root/.ros/log/2023-07-09-16-49-58-754723-ubuntu-6891
+root@ubuntu:~# ros2 launch yahboomcar_bringup yahboomcar_nodehub_bringup_launch.py
+[INFO] [launch]: All log files can be found below /root/.ros/log/2023-10-07-15-48-46-154585-ubuntu-4064
 [INFO] [launch]: Default logging verbosity is set to INFO
-[INFO] [originbot_base-1]: process started with pid [6893]
-[INFO] [static_transform_publisher-2]: process started with pid [6895]
-[INFO] [static_transform_publisher-3]: process started with pid [6897]
-[INFO] [static_transform_publisher-4]: process started with pid [6899]
-[originbot_base-1] Loading parameters:
-[originbot_base-1]              - port name: ttyS3
-[originbot_base-1]              - correct factor vx: 0.8980
-[originbot_base-1]              - correct factor vth: 0.8740
-[originbot_base-1]              - auto stop on: 0
-[originbot_base-1]              - use imu: 0
-[static_transform_publisher-4] [INFO] [1688892599.398482288] [static_transform_publisher_wrXGY3d4cJPrfMMt]: Spinning until killed publishing transform from '/base_link' to '/imu_link'
-[static_transform_publisher-2] [INFO] [1688892599.404346159] [static_transform_publisher_f8bfUI3IdvTPSv5L]: Spinning until killed publishing transform from '/base_footprint' to '/base_link'
-[originbot_base-1] [INFO] [1688892599.417785811] [originbot_base]: originbot serial port opened
-[originbot_base-1] [INFO] [1688892599.919219715] [originbot_base]: OriginBot Start, enjoy it.
+[INFO] [Mcnamu_driver-1]: process started with pid [4625]
+[INFO] [base_node-2]: process started with pid [4627]
+[INFO] [imu_filter_madgwick_node-3]: process started with pid [4629]
+[INFO] [ekf_node-4]: process started with pid [4631]
+[INFO] [joint_state_publisher-5]: process started with pid [4633]
+[INFO] [robot_state_publisher-6]: process started with pid [4635]
+[INFO] [static_transform_publisher-7]: process started with pid [4637]
+[imu_filter_madgwick_node-3] [INFO] [1696664928.206501590] [imu_filter_madgwick]: Starting ImuFilter
+[imu_filter_madgwick_node-3] [INFO] [1696664928.222764213] [imu_filter_madgwick]: Using dt computed from messags
+[imu_filter_madgwick_node-3] [INFO] [1696664928.222977621] [imu_filter_madgwick]: The gravity vector is kept in.
+[imu_filter_madgwick_node-3] [INFO] [1696664928.251886613] [imu_filter_madgwick]: Imu filter gain set to 0.10000
+[imu_filter_madgwick_node-3] [INFO] [1696664928.252147777] [imu_filter_madgwick]: Gyro drift bias set to 0.00000
+[imu_filter_madgwick_node-3] [INFO] [1696664928.252259252] [imu_filter_madgwick]: Magnetometer bias values: 0.00
+[static_transform_publisher-7] [INFO] [1696664928.286630944] [static_transform_publisher_lRrC5ZXgWzegDUvw]: Spi'
+[robot_state_publisher-6] Parsing robot urdf xml string.
+[robot_state_publisher-6] The root link base_link has an inertia specified in the URDF, but KDL does not suppor.
+[robot_state_publisher-6] Link camera2_link had 0 children
+[robot_state_publisher-6] Link camera_link had 0 children
+[robot_state_publisher-6] Link imu_link had 0 children
+[robot_state_publisher-6] Link left_back_wheel had 0 children
+[robot_state_publisher-6] Link left_front_wheel had 0 children
+[robot_state_publisher-6] Link lidar_link had 0 children
+[robot_state_publisher-6] Link right_back_wheel had 0 children
+[robot_state_publisher-6] Link right_front_wheel had 0 children
+[robot_state_publisher-6] [INFO] [1696664928.460429490] [robot_state_publisher]: got segment base_link
+[robot_state_publisher-6] [INFO] [1696664928.461156350] [robot_state_publisher]: got segment camera2_link
+[robot_state_publisher-6] [INFO] [1696664928.461358672] [robot_state_publisher]: got segment camera_link
+[robot_state_publisher-6] [INFO] [1696664928.461447143] [robot_state_publisher]: got segment imu_link
+[robot_state_publisher-6] [INFO] [1696664928.461507486] [robot_state_publisher]: got segment left_back_wheel
+[robot_state_publisher-6] [INFO] [1696664928.461565078] [robot_state_publisher]: got segment left_front_wheel
+[robot_state_publisher-6] [INFO] [1696664928.461622045] [robot_state_publisher]: got segment lidar_link
+[robot_state_publisher-6] [INFO] [1696664928.461675970] [robot_state_publisher]: got segment right_back_wheel
+[robot_state_publisher-6] [INFO] [1696664928.461731520] [robot_state_publisher]: got segment right_front_wheel
+[ekf_node-4] X acceleration is being measured from IMU; X velocity control input is disabled
+[joint_state_publisher-5] [INFO] [1696664930.805215712] [joint_state_publisher]: Waiting for robot_description .
+[imu_filter_madgwick_node-3] [INFO] [1696664930.874444424] [imu_filter_madgwick]: First IMU message received.
 
 ```
 
@@ -119,20 +141,22 @@ currently:      speed 0.5       turn 1.0
 
 ### 发布话题
 
-| 名称                          | 消息类型                                                     | 说明                                                   |
-| ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------ |
-| /originbot_status             |  originbot_msgs/msg/OriginbotStatus                          | 发布OriginBot机器人状态                           |
-| /odom                         |  nav_msgs/msg/Odometry                                       | 发布OriginBot里程计信息                           |
-| /tf_static                    |  tf2_msgs/msg/TFMessage                                      | 发布OriginBot相关坐标系信息                           |
+| 名称                    |           消息类型                | 说明                                                   |
+| ---------------------- | ------rigin--------------------- | ------------------------------------------------------ |
+| /imu/data              |  sensor_msgs/msg/Imu             | IMU数据                          |
+| /imu/data_raw          |  sensor_msgs/msg/Imu             | IMU原始数据                          |
+| /imu/mag               |  sensor_msgs/msg/MagneticField   | 磁力计信息                           |
+| /tf_static             |  tf2_msgs/msg/TFMessage          | 发布机器人相关静态坐标系信息                           |
+| /tf                    |  tf2_msgs/msg/TFMessage          | 发布机器人相关动态坐标系信息                           |
+| /odom_raw              |  nav_msgs/msg/Odometry           | 机器人里程计原始信息                           |
+| /odometry/filtered     |  nav_msgs/msg/Odometry           | 机器人里程计信息                           |
 
 ## 参数
-| 参数名                | 类型        | 解释                                 | 是否必须 | 默认值                                               |
-| --------------------- | ----------- | ---------------------------------- | -------- | --------------------------- |
-| auto_stop_on_arg      | bool    |     是否使能自动停止功能                 | 否       | false |
-| use_imu_arg      | bool    |     是否使能IMU                 | 否       | false |
-| pub_odom_arg      | bool    |     是否使能发布Odom话题                | 否       | true |
-| correct_factor_vx_arg      | float    |  线速度校正参数                | 否       | 0.898 |
-| correct_factor_vth_arg      | float    |  角速度校正参数                | 否       | 0.874 |
+| 参数名                | 类型        | 说明              |
+| --------------------- | ----------- | ---------------------------------- | 
+| angular_limit      | float    |     角速度限制单位rad/s                 |
+| xlinear_limit     | float    |     x方向线速度限制单位m/s                 |
+| ylinear_limit      | float    |     y方向线速度限制单位m/s                |
 
 
 # 常见问题
