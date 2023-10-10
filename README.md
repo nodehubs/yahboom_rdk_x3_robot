@@ -92,6 +92,7 @@ root@ubuntu:~# ros2 launch yahboomcar_bringup yahboomcar_nodehub_bringup_launch.
 在另一个终端中运行如下指令打开键盘控制功能：
 
 ```bash
+sudo apt install tros-teleop-twist-keyboard
 source /opt/tros/setup.bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard 
 ```
