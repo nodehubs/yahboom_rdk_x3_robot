@@ -1,54 +1,56 @@
-# 功能介绍
+English| [简体中文](./README_cn.md)
 
-亚博智能RKD X3 ROBOT是一款面向机器人开发者和教育生态的智能机器人开发套件。该套件以旭日X3派为核心运算单元，以TogetherROS.Bot为核心机器人操作系统，集成成了建图、导航、人体跟随、手势识别等功能。本项目为亚博智能RKD X3 ROBOT机器人最小功能系统，该系统能够实现RKD X3 ROBOT的基本运动控制和位姿反馈。该项目包含以下三个功能包：
+# Feature Introduction
 
-- yahboom_sunrise_robot_lib：负责与MCU的基础通信以及命令转换
-- yahboomcar_base_node：负责更新机器人的Odom和tf信息
-- yahboomcar_description：负责描述机器人机械机构信息
-- yahboomcar_bringup：负责机器人的初始化，订阅运动控制话题、发布机器人状态描述话题和IMU信息
+Yahboom Intelligent RKD X3 ROBOT is an intelligent robot development kit for robot developers and educational ecosystems. This kit is powered by the Sunrise X3 chip as the core computing unit and the TogetherROS.Bot as the core robot operating system, integrating functions such as mapping, navigation, human tracking, and gesture recognition. This project is the minimum functional system for the Yahboom Intelligent RKD X3 ROBOT, which can achieve basic motion control and pose feedback for the RKD X3 ROBOT. The project includes three function packages:
 
-# 物料清单
+- yahboom_sunrise_robot_lib: Responsible for basic communication with the MCU and command conversion
+- yahboomcar_base_node: Responsible for updating the robot's Odom and tf information
+- yahboomcar_description: Responsible for describing the robot's mechanical structure information
+- yahboomcar_bringup: Responsible for robot initialization, subscribing to motion control topics, publishing robot status description topics, and IMU information
 
-| 机器人名称          | 生产厂家 | 参考链接                                                     |
-| :------------------ | -------- | ------------------------------------------------------------ |
-| 亚博智能RKD X3 ROBOT | 亚博智能   | [购买链接](https://detail.tmall.com/item.htm?abbucket=8&id=726857243156&rn=bf4bcf345d154daf6f1572f015c838f4&scene=taobao_shop&spm=a1z10.1-b-s.w5003-25077533329.15.324244e1UOLGab)                       |
-| RDK X3             | 多厂家 | [购买链接](https://developer.horizon.ai/sunrise) |
+# Bill of Materials
 
-# 使用方法
+| Robot Name           | Manufacturer | Reference Link                                                |
+| :------------------ | :-------- | :------------------------------------------------------------ |
+| Yahboom Intelligent RKD X3 ROBOT | Yahboom | [Purchase Link](https://detail.tmall.com/item.htm?abbucket=8&id=726857243156&rn=bf4bcf345d154daf6f1572f015c838f4&scene=taobao_shop&spm=a1z10.1-b-s.w5003-25077533329.15.324244e1UOLGab)                       |
+| RDK X3             | Various Manufacturers | [Purchase Link](https://developer.horizon.ai/sunrise) |
 
-## 准备工作
+# Instructions for Use
 
-参考亚博智能RKD X3 ROBOT组装视频和文档，完成机器人的硬件组装。
+## Preparation
 
-## 安装 
+Refer to the Yahboom Intelligent RKD X3 ROBOT assembly video and documentation to complete the hardware assembly of the robot.
 
-1. 通过MobaXterm或者其他终端软件连接机器人
+## Installation
 
-2. 点击[NodeHub OriginBot项目](http://it-dev.horizon.ai/nodehubDetail/170117036053371431)右上角快速部署，复制如下命令在RDK的终端中运行，完成人亚博智能RKD X3 ROBOT机器人最小系统安装。
+1. Connect to the robot through MobaXterm or other terminal software
+
+2. Click on the [NodeHub OriginBot project](http://it-dev.horizon.ai/nodehubDetail/170117036053371431) in the top right corner for quick deployment. Copy and run the following commands in the RDK terminal to install the Yahboom Intelligent RKD X3 ROBOT minimum system.
 
 ```bash
 sudo apt update
 sudo apt install -y tros-yahboom-sunrise-robot-lib tros-yahboomcar-bringup tros-yahboomcar-description tros-yahboomcar-base-node
 ```
 
-## 运行
+## Running
 
-### 启动机器人
+### Start the Robot
 
-在终端中输入：
+Enter the following command in the terminal:
 
 ```bash
 source /opt/tros/setup.bash
 ros2 launch yahboomcar_bringup yahboomcar_nodehub_bringup_launch.py
 ```
 
-运行成功后可看到如下提示
+Upon successful execution, you will see the following prompt:
 
 ```shell
 root@ubuntu:~# ros2 launch yahboomcar_bringup yahboomcar_nodehub_bringup_launch.py
 [INFO] [launch]: All log files can be found below /root/.ros/log/2023-10-07-15-48-46-154585-ubuntu-4064
 [INFO] [launch]: Default logging verbosity is set to INFO
-[INFO] [Mcnamu_driver-1]: process started with pid [4625]
+```[INFO] [Mcnamu_driver-1]: process started with pid [4625]
 [INFO] [base_node-2]: process started with pid [4627]
 [INFO] [imu_filter_madgwick_node-3]: process started with pid [4629]
 [INFO] [ekf_node-4]: process started with pid [4631]
@@ -85,9 +87,7 @@ root@ubuntu:~# ros2 launch yahboomcar_bringup yahboomcar_nodehub_bringup_launch.
 [joint_state_publisher-5] [INFO] [1696664930.805215712] [joint_state_publisher]: Waiting for robot_description .
 [imu_filter_madgwick_node-3] [INFO] [1696664930.874444424] [imu_filter_madgwick]: First IMU message received.
 
-```
-
-### 键盘控制机器人
+### 控制键盘中的机器人
 
 在另一个终端中运行如下指令打开键盘控制功能：
 
@@ -97,9 +97,7 @@ source /opt/tros/setup.bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard 
 ```
 
-运行成功后出现以下提示
-
-```bash
+运行成功后出现以下提示```bash
 This node takes keypresses from the keyboard and publishes them
 as Twist messages. It works best with a US keyboard layout.
 ---------------------------
@@ -128,38 +126,36 @@ CTRL-C to quit
 currently:      speed 0.5       turn 1.0
 ```
 
-根据提示使用键盘对应按键控制机器人运动。
+Control the robot movement using the corresponding keys on the keyboard.
 
-# 接口说明
-## 话题
+# Interface Description
+## Topics
 
-### 订阅话题
+### Subscribed Topics
 
-| 名称                          | 消息类型                                                     | 说明                                                   |
-| ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------ |
-| /cmd_vel                      | geometry_msgs/msg/Twist                                      | 发布控制机器人移动的速度指令                           |
-
-
-### 发布话题
-
-| 名称                    |           消息类型                | 说明                                                   |
-| ---------------------- | ------rigin--------------------- | ------------------------------------------------------ |
-| /imu/data              |  sensor_msgs/msg/Imu             | IMU数据                          |
-| /imu/data_raw          |  sensor_msgs/msg/Imu             | IMU原始数据                          |
-| /imu/mag               |  sensor_msgs/msg/MagneticField   | 磁力计信息                           |
-| /tf_static             |  tf2_msgs/msg/TFMessage          | 发布机器人相关静态坐标系信息                           |
-| /tf                    |  tf2_msgs/msg/TFMessage          | 发布机器人相关动态坐标系信息                           |
-| /odom_raw              |  nav_msgs/msg/Odometry           | 机器人里程计原始信息                           |
-| /odometry/filtered     |  nav_msgs/msg/Odometry           | 机器人里程计信息                           |
-
-## 参数
-| 参数名                | 类型        | 说明              |
-| --------------------- | ----------- | ---------------------------------- | 
-| angular_limit      | float    |     角速度限制单位rad/s                 |
-| xlinear_limit     | float    |     x方向线速度限制单位m/s                 |
-| ylinear_limit      | float    |     y方向线速度限制单位m/s                |
+| Name        | Message Type                | Description                     |
+| ----------- | --------------------------- | ------------------------------- |
+| /cmd_vel    | geometry_msgs/msg/Twist     | Publishes velocity commands to control robot movement |
 
 
-# 常见问题
+### Published Topics
+
+| Name          | Message Type                | Description                            |
+| ------------- | --------------------------  | ------------------------------------- |
+| /imu/data     | sensor_msgs/msg/Imu         | IMU data                              |
+| /imu/data_raw | sensor_msgs/msg/Imu         | Raw IMU data                          |
+| /imu/mag      | sensor_msgs/msg/MagneticField | Magnetometer information             |
+| /tf_static    | tf2_msgs/msg/TFMessage      | Publishes static coordinate system information related to the robot |
+```| /tf                    |  tf2_msgs/msg/TFMessage          | Publish robot related dynamic coordinate system information                           |
+| /odom_raw              |  nav_msgs/msg/Odometry           | Robot odometer raw information                           |
+| /odometry/filtered     |  nav_msgs/msg/Odometry           | Robot odometer information                           |
+
+## Parameters
+| Parameter Name         | Type        | Description              |
+| ---------------------  | ----------- | ---------------------------------- | 
+| angular_limit          | float       | Angular speed limit in rad/s                 |
+| xlinear_limit          | float       | Limit of linear velocity in the x direction in m/s                 |
+| ylinear_limit          | float       | Limit of linear velocity in the y direction in m/s                |
 
 
+# FAQ
