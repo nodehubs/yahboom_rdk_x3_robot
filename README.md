@@ -86,6 +86,7 @@ root@ubuntu:~# ros2 launch yahboomcar_bringup yahboomcar_nodehub_bringup_launch.
 [ekf_node-4] X acceleration is being measured from IMU; X velocity control input is disabled
 [joint_state_publisher-5] [INFO] [1696664930.805215712] [joint_state_publisher]: Waiting for robot_description .
 [imu_filter_madgwick_node-3] [INFO] [1696664930.874444424] [imu_filter_madgwick]: First IMU message received.
+```
 
 ### 控制键盘中的机器人
 
@@ -97,7 +98,9 @@ source /opt/tros/setup.bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard 
 ```
 
-运行成功后出现以下提示```bash
+运行成功后出现以下提示
+
+```bash
 This node takes keypresses from the keyboard and publishes them
 as Twist messages. It works best with a US keyboard layout.
 ---------------------------
