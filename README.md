@@ -149,7 +149,7 @@ Control the robot movement using the corresponding keys on the keyboard.
 | /imu/data_raw | sensor_msgs/msg/Imu         | Raw IMU data                          |
 | /imu/mag      | sensor_msgs/msg/MagneticField | Magnetometer information             |
 | /tf_static    | tf2_msgs/msg/TFMessage      | Publishes static coordinate system information related to the robot |
-```| /tf                    |  tf2_msgs/msg/TFMessage          | Publish robot related dynamic coordinate system information                           |
+| /tf                    |  tf2_msgs/msg/TFMessage          | Publish robot related dynamic coordinate system information                           |
 | /odom_raw              |  nav_msgs/msg/Odometry           | Robot odometer raw information                           |
 | /odometry/filtered     |  nav_msgs/msg/Odometry           | Robot odometer information                           |
 
