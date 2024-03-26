@@ -88,9 +88,9 @@ root@ubuntu:~# ros2 launch yahboomcar_bringup yahboomcar_nodehub_bringup_launch.
 [imu_filter_madgwick_node-3] [INFO] [1696664930.874444424] [imu_filter_madgwick]: First IMU message received.
 ```
 
-### 控制键盘中的机器人
+### Control the robot using the keyboard.
 
-在另一个终端中运行如下指令打开键盘控制功能：
+Run the following command in another terminal to enable keyboard control functionality:
 
 ```bash
 sudo apt install tros-teleop-twist-keyboard
@@ -98,7 +98,7 @@ source /opt/tros/setup.bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard 
 ```
 
-运行成功后出现以下提示
+After successful execution, the following prompt appears.
 
 ```bash
 This node takes keypresses from the keyboard and publishes them
