@@ -144,15 +144,15 @@ currently:      speed 0.5       turn 1.0
 
 ### 发布话题
 
-| 名称                    |           消息类型                | 说明                                                   |
-| ---------------------- | ------rigin--------------------- | ------------------------------------------------------ |
-| /imu/data              |  sensor_msgs/msg/Imu             | IMU数据                          |
-| /imu/data_raw          |  sensor_msgs/msg/Imu             | IMU原始数据                          |
-| /imu/mag               |  sensor_msgs/msg/MagneticField   | 磁力计信息                           |
-| /tf_static             |  tf2_msgs/msg/TFMessage          | 发布机器人相关静态坐标系信息                           |
-| /tf                    |  tf2_msgs/msg/TFMessage          | 发布机器人相关动态坐标系信息                           |
-| /odom_raw              |  nav_msgs/msg/Odometry           | 机器人里程计原始信息                           |
-| /odometry/filtered     |  nav_msgs/msg/Odometry           | 机器人里程计信息                           |
+| 名称                    | 消息类型                          | 说明                                                   |
+| ----------------------- | --------------------------------- | ------------------------------------------------------ |
+| /imu/data              |  sensor_msgs/msg/Imu             | IMU数据                                                 |
+| /imu/data_raw          |  sensor_msgs/msg/Imu             | IMU原始数据                                             |
+| /imu/mag               |  sensor_msgs/msg/MagneticField   | 磁力计信息                                              |
+| /tf_static             |  tf2_msgs/msg/TFMessage          | 发布机器人相关静态坐标系信息                             |
+| /tf                    |  tf2_msgs/msg/TFMessage          | 发布机器人相关动态坐标系信息                             |
+| /odom_raw              |  nav_msgs/msg/Odometry           | 机器人里程计原始信息                                    |
+| /odometry/filtered     |  nav_msgs/msg/Odometry           | 机器人里程计信息                                        |
 
 ## 参数
 | 参数名                | 类型        | 说明              |
